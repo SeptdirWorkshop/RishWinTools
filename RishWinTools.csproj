@@ -11,6 +11,9 @@
 		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>bin\Release\$(Version)\</OutputPath>
+    </PropertyGroup>
 	<ItemGroup>
 	  <Content Include="icon.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>

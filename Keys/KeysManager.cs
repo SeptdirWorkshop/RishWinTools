@@ -12,7 +12,7 @@ namespace RishWinTools.Keys
 {
     public static class KeysManager
     {
-        private static Dictionary<string, KeyObject> Keys;
+        private static Dictionary<string, KeyObject>? Keys;
 
         public static Dictionary<string, KeyObject> GetKeys(bool forse = false)
         {
@@ -29,7 +29,10 @@ namespace RishWinTools.Keys
                         if (content.Contains("-----BEGIN "))
                         {
                             KeyObject key = new KeyObject(file);
-                            Keys[key.Filename] = key;
+                            if (key != null && key.Filename != null && key.KeyExist)
+                            {
+                                Keys[key.Filename] = key;
+                            }
                         }
                     }
                 }
