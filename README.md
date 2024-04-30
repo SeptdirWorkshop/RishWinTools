@@ -1,12 +1,11 @@
-# RishWinTools – SHH Config and Keys Manager for Windows
+# RishWinTools вЂ“ SHH Config and Keys Manager for Windows
 Useful utility for editing SSH config and SSH keys.
 
-[![Поддержка](https://img.shields.io/github/issues-raw/Delo-Design/RishWinTools?style=for-the-badge&logoWidth=20&label=support)](https://github.com/RadicalMart/ExtraPro/issues)
+[![Support](https://img.shields.io/github/issues-raw/Delo-Design/RishWinTools?style=for-the-badge&logoWidth=20&label=support)](https://github.com/RadicalMart/ExtraPro/issues)
 [![Download](https://img.shields.io/github/release/Delo-Design/RishWinTools.svg?style=for-the-badge&colorA=555&colorB=1e87f0&label=download)](https://github.com/RadicalMart/ExtraPro/releases/latest)
-
 
 ![RishWinTools](logo.png)
 
-Менеджер конфигурация подключений и ключей для операционной системы Windows.
+РњРµРЅРµРґР¶РµСЂ РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ РїРѕРґРєР»СЋС‡РµРЅРёР№ Рё РєР»СЋС‡РµР№ РґР»СЏ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹ Windows.
 
-Официальный сайт RISH https://rish.su
+РћС„РёС†РёР°Р»СЊРЅС‹Р№ СЃР°Р№С‚ RISH https://rish.su
