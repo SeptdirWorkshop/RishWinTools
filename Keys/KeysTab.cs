@@ -117,7 +117,7 @@ namespace RishWinTools.Keys
             ContentTable.AllowUserToDeleteRows = false;
             ContentTable.ReadOnly = true;
             ContentTable.RowHeadersVisible = false;
-            ContentTable.Columns.Add("Name", "Имя файла");
+            ContentTable.Columns.Add("Name", "Файл");
             ContentTable.Columns.Add("PublicKey", "Публичный ключ");
             ContentTable.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             ContentTable.Columns["PublicKey"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

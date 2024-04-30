@@ -9,5 +9,16 @@
 		<Company>Delo Design</Company>
 		<Product>RishWinTools</Product>
 		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="icon.ico">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="logo.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
