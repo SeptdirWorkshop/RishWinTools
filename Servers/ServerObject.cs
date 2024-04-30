@@ -10,11 +10,11 @@ namespace RishWinTools.Servers
 {
     public class ServerObject
     {
-        public string Host;
-        public string Hostname;
-        public string User;
-        public string KeyName;
-        public string PublicKey;
+        public string? Host;
+        public string? Hostname;
+        public string? User;
+        public string? KeyName;
+        public string? PublicKey;
         public Dictionary<string, string> Additions = new Dictionary<string, string>();
         public KeyObject Key = new KeyObject();
 

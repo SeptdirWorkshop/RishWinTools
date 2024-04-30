@@ -23,7 +23,7 @@ namespace RishWinTools.Servers
         public string UserValue => UserInput.Text;
         private Label KeyLabel;
         private ComboBox KeyInput;
-        public string KeyValue
+        public string? KeyValue
         {
             get
             {
@@ -120,12 +120,15 @@ namespace RishWinTools.Servers
             foreach (var item in items)
             {
                 KeyObject key = item.Value as KeyObject;
-                KeyInput.Items.Add(new KeyValuePair<string, string>(key.Filename, key.Filename));
+                if (key != null && key.Filename != null)
+                {
+                    KeyInput.Items.Add(new KeyValuePair<string, string>(key.Filename, key.Filename));
+                }
             }
             KeyInput.SelectedIndex = 0;
             KeyInput.GotFocus += (sender, e) =>
             {
-                ComboBox comboBox = sender as ComboBox;
+                ComboBox? comboBox = sender as ComboBox;
                 if (comboBox != null)
                 {
                     comboBox.DroppedDown = true;
@@ -141,7 +144,7 @@ namespace RishWinTools.Servers
             CreateButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             CreateButton.Location = new Point(10, KeyInput.Bottom + 10);
             CreateButton.UseVisualStyleBackColor = true;
-            CreateButton.Click += new EventHandler(OnCreateButtonClick);
+            CreateButton.Click += OnCreateButtonClick;
             Controls.Add(CreateButton);
 
             // Layout
@@ -157,7 +160,7 @@ namespace RishWinTools.Servers
             ClientSize = new Size(ClientSize.Width, FormHeight + 20);
         }
 
-        protected void OnCreateButtonClick(object sender, EventArgs e)
+        protected void OnCreateButtonClick(object? sender, EventArgs e)
         {
 
             string hostValue = HostValue.Trim();
@@ -181,12 +184,12 @@ namespace RishWinTools.Servers
                 return;
             }
 
-            string keyValue = KeyValue.Trim();
+            string keyValue = (KeyValue != null) ? KeyValue.Trim() : "";
             if (string.IsNullOrWhiteSpace(keyValue))
             {
                 MessageBox.Show("Пожалуйста Выберите ключ", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }          
+            }
 
             if (keyValue == "rwt_generete")
             {
@@ -202,7 +205,16 @@ namespace RishWinTools.Servers
                     key = new KeyObject(newKeyName);
                 }
 
-                keyValue = key.Filename;
+                if (key.Filename != null)
+                {
+                    keyValue = key.Filename;
+                }
+            }
+
+            if (keyValue == null)
+            {
+                MessageBox.Show("Пожалуйста Выберите ключ", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (ServersManager.CreateServer(hostValue, hostnameValue, userValue, keyValue))

@@ -147,7 +147,7 @@ namespace RishWinTools.Servers
 
         protected void OnConnectServerButtonClick(object? sender, EventArgs e)
         {
-            if (Server == null)
+            if (Server == null || Server.Host == null)
             {
                 MessageBox.Show("Сервер не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -157,7 +157,7 @@ namespace RishWinTools.Servers
 
         protected void OnRemoveServerButtonClick(object? sender, EventArgs e)
         {
-            if (Server == null)
+            if (Server == null || Server.Host == null)
             {
                 MessageBox.Show("Сервер не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

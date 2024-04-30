@@ -168,7 +168,7 @@ namespace RishWinTools.Keys
         protected void OnInsertButtonClick(object? sender, EventArgs e)
         {
             using (InsertKeyForm insertKeyForm = new InsertKeyForm())
-            {                
+            {
                 if (insertKeyForm.ShowDialog(this) == DialogResult.OK)
                 {
                     LoadConent(true);
@@ -206,7 +206,11 @@ namespace RishWinTools.Keys
                 return;
             }
 
-            string keyName = ContentTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string? keyName = ContentTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (keyName == null || String.IsNullOrEmpty(keyName))
+            {
+                return;
+            }
 
             using (KeyForm keyForm = new KeyForm(keyName))
             {

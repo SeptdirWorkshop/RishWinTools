@@ -134,7 +134,7 @@ namespace RishWinTools.Keys
 
         protected void OnCreatePublicKeyButtonClick(object? sender, EventArgs e)
         {
-            if (Key == null)
+            if (Key == null || Key.Filename == null)
             {
                 MessageBox.Show("Ключ не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -147,7 +147,7 @@ namespace RishWinTools.Keys
         }
         protected void OnRemoveKeyButtonClick(object? sender, EventArgs e)
         {
-            if (Key == null)
+            if (Key == null || Key.Filename == null)
             {
                 MessageBox.Show("Ключ не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -169,6 +169,11 @@ namespace RishWinTools.Keys
 
             string? name = ContentTable.Rows[e.RowIndex].Cells[0].Value.ToString();
             string? value = ContentTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
 
             try
             {

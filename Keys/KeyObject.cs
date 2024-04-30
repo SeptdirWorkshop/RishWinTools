@@ -9,14 +9,14 @@ namespace RishWinTools.Keys
 {
     public class KeyObject
     {
-        public string Filename;
-        public string Path;
-        public string PublicKey;
-        public string PublicKeyPath;
-        public string ServerCommand;
+        public string? Filename;
+        public string? Path;
+        public string? PublicKey;
+        public string? PublicKeyPath;
+        public string? ServerCommand;
         public bool KeyExist = false;
 
-        public KeyObject(string fileName = null)
+        public KeyObject(string? fileName = null)
         {
             Path = "";
             if (fileName == null)

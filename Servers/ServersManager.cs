@@ -49,6 +49,11 @@ namespace RishWinTools.Servers
         public static bool CreateServer(string host, string hostname, string user, string key)
         {
             GetServers(true);
+            if (Servers == null)
+            {
+                return false;
+            }
+
             if (Servers.ContainsKey(host))
             {
                 MessageBox.Show("Сервер уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,13 +89,21 @@ namespace RishWinTools.Servers
                 MessageBox.Show("Сервер удален", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
+
             ServerObject server = new ServerObject(host);
-            if (Servers != null && !Servers.ContainsKey(server.Host))
+            if (server.Host == null)
+            {
+                MessageBox.Show("Сервер не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (Servers.ContainsKey(server.Host))
             {
                 MessageBox.Show("Сервер не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
+
             Servers.Remove(server.Host);
             if (PullServersToFile())
             {
@@ -107,6 +120,11 @@ namespace RishWinTools.Servers
 
         public static void SetServer(ServerObject server)
         {
+            if (server.Host == null)
+            {
+                return;
+            }
+
             if (Servers == null)
             {
                 Servers = new Dictionary<string, ServerObject>();
@@ -120,14 +138,22 @@ namespace RishWinTools.Servers
             bool backup = false;
             try
             {
-                List<string> result = new List<string>();
-                SortedDictionary<string, ServerObject> sortedServers = new SortedDictionary<string, ServerObject>(Servers);
-                foreach (var item in sortedServers)
+                if (Servers == null)
                 {
-                    ServerObject server = item.Value as ServerObject;
-                    if (server != null)
+                    GetServers();
+                }
+
+                List<string> result = new List<string>();
+                if (Servers != null)
+                {
+                    SortedDictionary<string, ServerObject> sortedServers = new SortedDictionary<string, ServerObject>(Servers);
+                    foreach (var item in sortedServers)
                     {
-                        result.Add(server.ToConfigFileSting());
+                        ServerObject server = item.Value as ServerObject;
+                        if (server != null)
+                        {
+                            result.Add(server.ToConfigFileSting());
+                        }
                     }
                 }
 
@@ -160,7 +186,7 @@ namespace RishWinTools.Servers
                         File.Copy(ConfigBacPath, ConfigPath, true);
                         backupRestore = 1;
                     }
-                    catch (Exception backupEx)
+                    catch
                     {
                         backupRestore = -1;
                     }
@@ -186,7 +212,7 @@ namespace RishWinTools.Servers
                 sshCommand = $"ssh {user}@{host}";
             }
 
-            string workingDirectory = Environment.GetEnvironmentVariable("USERPROFILE");
+            string? workingDirectory = Environment.GetEnvironmentVariable("USERPROFILE");
             string commandToShow = $"echo '{workingDirectory}^>{sshCommand}'";
 
             try
