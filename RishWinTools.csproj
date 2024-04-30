@@ -10,9 +10,11 @@
 		<Product>RishWinTools</Product>
 		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<PackageName>RishWinTools_v$(Version)</PackageName>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>bin\Release\$(Version)\</OutputPath>
+      <OutputPath>bin\Release\$(PackageName)\RishWinTools\</OutputPath>
     </PropertyGroup>
 	<ItemGroup>
 	  <Content Include="icon.ico">
@@ -24,4 +26,10 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
+	<Target Name="PackageRelease" BeforeTargets="AfterBuild" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	 		<ZipDirectory
+                SourceDirectory="bin\Release\$(PackageName)"
+                DestinationFile="bin\Release\$(PackageName).zip"
+                Overwrite="true"/>
+    </Target>
 </Project>

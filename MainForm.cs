@@ -8,24 +8,13 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RishWinTools
 {
     public partial class MainForm : Form
     {
         private TabControl Tabs;
-        private Panel Footer;
-        private readonly System.ComponentModel.IContainer? Components;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (Components != null))
-            {
-                Components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        private Panel Footer;      
 
         public MainForm()
         {
