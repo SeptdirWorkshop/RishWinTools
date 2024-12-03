@@ -115,7 +115,7 @@ namespace RishWinTools.Servers
             KeyInput.DisplayMember = "Value";
             KeyInput.ValueMember = "Key";
             KeyInput.Items.Add(new KeyValuePair<string, string>("", "-Выберите ключ-"));
-            KeyInput.Items.Add(new KeyValuePair<string, string>("rwt_generete", "Созать ключ"));
+            KeyInput.Items.Add(new KeyValuePair<string, string>("rwt_generete", "Создать ключ"));
             Dictionary<string, KeyObject> items = KeysManager.GetKeys(true);
             foreach (var item in items)
             {
