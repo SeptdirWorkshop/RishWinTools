@@ -64,7 +64,7 @@ namespace RishWinTools.Keys
             // GenerateButton
             GenerateButton = new Button();
             GenerateButton.Name = "GenerateButton";
-            GenerateButton.Text = "Сгенировать ключ";
+            GenerateButton.Text = "Сгенерировать ключ";
             GenerateButton.AutoSize = true;
             GenerateButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             GenerateButton.Location = new Point(10, CommentInput.Bottom + 10);
