@@ -68,13 +68,13 @@ namespace RishWinTools.Keys
             {
                 if (message)
                 {
-                    MessageBox.Show("Ключ сгенирирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ключ сгенерирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 return true;
             }
             else
             {
-                MessageBox.Show($"Ошибка генерерации ключа: {error}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка генерации ключа: {error}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
